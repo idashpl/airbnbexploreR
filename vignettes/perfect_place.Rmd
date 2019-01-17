@@ -1,0 +1,80 @@
+---
+title: "Find a perfect place"
+author: "iDash team"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Let's find the best place for you in Amsterdam!
+
+## Importing data
+
+First, we have to import data from http://insideairbnb.com webpage. To do that, run `download_airbnb_data()` function:
+
+```{r, eval=F}
+download_airbnb_data(data_to_load = c("listings", "calendar"), 
+                     city = "Amsterdam", 
+                     format = "raw")
+```
+
+It gives us two files: `*listings.csv` with information about each rented flat in Amsterdam and `*calendar.csv` which stores info about flat availability year ahead. The argument `format = "raw"` indicates we only want to import raw data.
+
+## Search component
+
+So we'd like to find a place:
+
+- for 3 nights, 
+- for 2 people, 
+- checkin will be at `"2019-01-30"`,    
+- with price ranged between 50\$ and 150\$ per night,   
+- at most 2 kilometers from the city center.    
+
+Also we're interested only in places with rating higher than 95 points.
+
+### First approach
+
+We can do it by building a pipeline.
+
+
+```{r,eval = F}
+library(dplyr)
+listings <- readr::read_csv("airbnb_data/amsterdam20181206listings.csv.gz")
+calendar <- readr::read_csv("airbnb_data/amsterdam20181206calendar.csv.gz")
+
+best_flats_df <- listings %>% 
+    find_located_flat(distance_center, distance = 2) %>%
+    find_reviewed_flat(bayes_review) %>%
+    find_priced_flat(num_guests = 2, price = c(50, 150)) %>%
+    find_available_flat(calendar, checkin = "2019/01/30", num_days = 3)
+```
+
+### Second approach
+
+We can also use `find_your_place` function which is a wrapper of the pipeline.
+
+```{r,eval = F}
+best_flats_df <- find_your_place(listings, calendar, checkin = "2019/01/30", 
+                                 num_days = 3, num_guests = 2, distance = 2, 
+                                 price = c(50, 150))
+```
+
+
+## Show the best options
+
+We can generate the map with our best options. All we have to do is to run `show_your_place` function.
+
+```{r, eval = F}
+show_your_place(best_flats_df, top = 5)
+```
+
