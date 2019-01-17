@@ -1,0 +1,32 @@
+Package: airbnbexploreR
+Type: Package
+Title: Scrape, explore and visualise the airBnB data. 
+Version: 0.1.0
+Authors@R: c(
+    person("Mikolaj", "Bogucki", email = "mb@idash.pl", role = c("aut", "cre")),
+    person("Mikolaj", "Olszewski", email = "mo@idash.pl", role = c("aut")))
+Description: airbnbexploreR is a package that make it easier to scrape and analyze 
+    airBnB data from http://insideairbnb.com webpage. Additionally, it has a great search
+    component to find optimal flat based on user's preferences.
+Imports:
+    dplyr (>= 0.7.4),
+    leaflet (>= 2.0.0),
+    lubridate (>= 1.7.0),
+    purrr (>= 0.2.5),
+    readr (>= 1.1.1),
+    rlang (>= 0.3.0),
+    rvest (>= 0.3.2),
+    shiny (>= 1.0.5),
+    sp (>= 1.3-1),
+    stringr (>= 1.3.0),
+    tidyr (>= 0.8.0),
+    utils,
+    xml2 (>= 1.2.0)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.0.1
+VignetteBuilder: knitr
