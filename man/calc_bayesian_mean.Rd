@@ -7,6 +7,11 @@
 calc_bayesian_mean(certain, prior, num_reviews, rating)
 }
 \arguments{
+\item{certain}{A numeric value which defines the level of certainty.
+It represents how confident the model is. It is equivalent to a number of observations.}
+
+\item{prior}{A numeric value which defines mean of prior.}
+
 \item{rating}{A list with rating for each flat.}
 
 \item{num_review}{A list with number of reviews for each flat.}

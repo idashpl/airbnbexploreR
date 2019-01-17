@@ -6,6 +6,15 @@
 \usage{
 find_reviewed_flat(data, name, certain = 30, prior = 90)
 }
+\arguments{
+\item{data}{A data.frame with listings. If file was downloaded by
+\code{download_airbnb_data} the name is "*listings.csv".}
+
+\item{certain}{A numeric value which defines the level of certainty.
+It represents how confident the model is. It is equivalent to a number of observations.}
+
+\item{prior}{A numeric value which defines mean of prior.}
+}
 \value{
 A data.frame with bayesian rating column.
 }

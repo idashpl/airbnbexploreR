@@ -6,6 +6,17 @@
 \usage{
 find_available_flat(data, calendar, checkin, num_days)
 }
+\arguments{
+\item{data}{A data.frame with listings. If file was downloaded by
+\code{download_airbnb_data} the name is "*listings.csv".}
+
+\item{calendar}{A data.frame with calendar. If file was downloaded by
+\code{download_airbnb_data} the name is "*calendar.csv".}
+
+\item{checkin}{The checkin date in the following format (YYYYMMDD, "YYYY/MM/DD", "YYYY-MM-DD").}
+
+\item{num_days}{The number of nights to stay.}
+}
 \value{
 A data.frame with flat which meet the available criterion.
 }

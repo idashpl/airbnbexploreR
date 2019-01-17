@@ -6,6 +6,10 @@
 \usage{
 convert_price_cols(data)
 }
+\arguments{
+\item{data}{A data.frame with listings. If file was downloaded by
+\code{download_airbnb_data} the name is "*listings.csv".}
+}
 \value{
 A data.frame with converted columns.
 }

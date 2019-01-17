@@ -7,7 +7,13 @@
 find_located_flat(data, name, distance = NULL)
 }
 \arguments{
+\item{data}{A data.frame with listings. If file was downloaded by
+\code{download_airbnb_data} the name is "*listings.csv".}
+
 \item{name}{An assigned name for the distance column.}
+
+\item{distance}{The distance from the city center. A numeric scalar will define
+maximum distance , a numeric vector of length two will create a range.}
 }
 \value{
 A data.frame with flat which meet the distance criterion.
